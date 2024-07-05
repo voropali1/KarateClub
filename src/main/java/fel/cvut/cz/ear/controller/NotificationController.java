@@ -16,7 +16,7 @@ public class NotificationController {
     private NotificationService notificationService;
 
     @PostMapping("/send")
-    public ResponseEntity<String> sendNotification(@RequestBody Notification notification, @Requesgit remote add origintParam("notificationMethod") String notificationMethod) {
+    public ResponseEntity<String> sendNotification(@RequestBody Notification notification, @RequestParam("notificationMethod") String notificationMethod) {
         Member recipient = notification.getRecipient();
         String subject = notification.getSubject();
         String message = notification.getMessage();
