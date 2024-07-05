@@ -1,0 +1,38 @@
+##version: '3'
+##
+##services:
+##  postgres:
+##    image: 'postgres:13'
+##    container_name: 'java-postgres'
+##    ports:
+##      - 5432:5432
+##    environment:
+##      POSTGRES_USER: sa
+##      POSTGRES_PASSWORD: 1
+##      POSTGRES_HOST_AUTH_METHOD: trust
+##      POSTGRES_DB: java
+#
+#
+#
+services:
+  db:
+    container_name: karate
+    image: postgres
+    environment:
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: 1
+      PGDATA: /data/postgres
+    ports:
+      - "5431:5432"
+    networks:
+      - db
+    restart: unless-stopped
+    volumes:
+      - db:/data/postgres
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:

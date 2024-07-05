@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5431/karatedb
+    username: sa
+    password: 1
+    driverClassName: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+security:
+  jwt:
+    secret-key: 8010b14e15f274416898ad78da0539940ba32fb19e6d40bed348c94f678c8e01
+    expiration-in-ms: 86400000
+
