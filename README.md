@@ -37,6 +37,6 @@ V projektu jsou implementovány následující design patterny:
 
 ## Kontakt
 
-Pro více informací nebo dotazy, prosím kontaktujte Alinu Voropaevu a Annu Luzan na emailu [voropali@fel.cvut.cz].
+Pro více informací nebo dotazy, prosím kontaktujte Alinu Voropaevu nebo Annu Luzan na emailu [voropali@fel.cvut.cz].
 
 Doufáme, že vám náš projekt bude užitečný!
