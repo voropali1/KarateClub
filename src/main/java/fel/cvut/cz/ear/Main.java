@@ -3,10 +3,12 @@ package fel.cvut.cz.ear;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.cache.annotation.EnableCaching;
 
 
 @SpringBootApplication
 @EntityScan(basePackages = "fel.cvut.cz.ear.model")
+@EnableCaching
 public class Main {
 
     public static void main(String[] args) {

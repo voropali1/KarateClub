@@ -5,6 +5,7 @@ import fel.cvut.cz.ear.dao.PaymentDao;
 import fel.cvut.cz.ear.model.Member;
 import fel.cvut.cz.ear.model.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,6 +53,7 @@ public class PaymentService {
 //        return false;
 //    }
 
+    @CachePut(value = "myCachePP", key = "#payment")
     @Transactional
     public void persist(Payment payment) {
         Objects.requireNonNull(payment);

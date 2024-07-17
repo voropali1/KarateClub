@@ -8,6 +8,9 @@ import fel.cvut.cz.ear.model.Tournament;
 import fel.cvut.cz.ear.model.TournamentResult;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +30,8 @@ public class TournamentService {
         this.tournamentResultDao = tournamentResultDao;
     }
 
+
+    @CachePut(value = "myCache4", key = "#name + '_' + #date")
     @Transactional
     public void createTournament(String name, Date date) {
         Tournament newTournament = new Tournament();
@@ -36,11 +41,14 @@ public class TournamentService {
         tournamentDao.save(newTournament);
     }
 
+    @Cacheable(value = "myCache4", key = "#memberId")
     @Transactional(readOnly = true)
     public List<TournamentResult> getAllTournamentResultsForMember(int memberId) {
         return tournamentResultDao.findAllByMember_Id(memberId);
     }
 
+
+    @CachePut(value = "myCache4", key = "#tournament")
     @Transactional
     public Tournament persist(Tournament tournament) {
         Objects.requireNonNull(tournament);
@@ -48,15 +56,22 @@ public class TournamentService {
         tournamentDao.save(tournament);
         return tournament;
     }
+
+
+    @Cacheable("myCache4")
     @Transactional(readOnly = true)
     public List<Tournament> getAllTournaments() {
         return tournamentDao.findAll();
     }
+
+    @Cacheable(value = "myCache4", key = "#tournamentId")
     @Transactional(readOnly = true)
     public Tournament getTournamentById(Long tournamentId) {
             return tournamentDao.findById(tournamentId)
                     .orElseThrow(() -> new RuntimeException("Member not found with id: " + tournamentId));
         }
+
+    @CachePut(value = "myCache4", key = "#tournamentId")
     @Transactional
     public void updateTournament(Long tournamentId, Tournament updatedTournament) {
 
@@ -67,6 +82,8 @@ public class TournamentService {
         tournamentDao.save(tournament);
 
         }
+
+    @CacheEvict(value = "myCache4", key = "#clubId")
     @Transactional
     public void deleteTournament(Long clubId) {
         Tournament tournament = getTournamentById(clubId);

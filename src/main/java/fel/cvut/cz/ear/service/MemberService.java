@@ -13,6 +13,9 @@ import fel.cvut.cz.ear.model.Role;
 import fel.cvut.cz.ear.util.Constants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -87,6 +90,7 @@ public class MemberService {
 
 
 
+    @CachePut(value = "myCache2", key = "#login")
     @Transactional
     public void createMember(String name, String address, String phoneNumber, String email, int level, String login, String password) {
         if (memberDao.findByLogin(login) != null) {
@@ -113,6 +117,7 @@ public class MemberService {
 
 
 
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void initializeAdmin(Long memberId) {
         Member admin = memberDao.findById(memberId).orElseThrow();
@@ -120,6 +125,8 @@ public class MemberService {
         memberDao.save(admin);
     }
 
+
+    @CachePut(value = "myCache2", key = "#member")
     @Transactional
     public void initializeAdmin(Member member) {
         member.setRole(Role.ADMIN);
@@ -131,6 +138,8 @@ public class MemberService {
         return user != null && passwordEncoder.matches(password, user.getPassword());
     }
 
+
+    @CacheEvict(value = "myCache2", key = "#memberId")
     @Transactional
     public Member deleteMember(Long memberId) {
 //        checkAdminRole();
@@ -142,6 +151,7 @@ public class MemberService {
         return null;
     }
 
+    @Cacheable("myCache2")
     @Transactional(readOnly = true)
     public List<MemberDTO> getAllMembers() {
         return memberDao.findAll().stream()
@@ -149,6 +159,8 @@ public class MemberService {
                 .collect(Collectors.toList());
     }
 
+
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void updateMember(Long memberId, @Valid Member updatedMember) {
         Member existingMember = memberDao.findById(memberId).orElse(null);
@@ -167,6 +179,7 @@ public class MemberService {
 
     }
 
+    @Cacheable(value = "myCache2", key = "#memberId")
     @Transactional(readOnly = true)
     public MemberDTO getMemberById(Long memberId) {
         return memberDao.findById(memberId)
@@ -182,6 +195,7 @@ public class MemberService {
         }
     }
 
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void blockMember(Long memberId) {
 //        checkAdminRole();
@@ -192,6 +206,7 @@ public class MemberService {
         }
     }
 
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void changeMemberLevel(Long memberId, int newLevel) {
 //        checkAdminRole();
@@ -210,6 +225,7 @@ public class MemberService {
     }
 
 
+    @CachePut(value = "myCache2", key = "#memberDTO")
     @Transactional
     public void persist(MemberDTO memberDTO) {
         Objects.requireNonNull(memberDTO);
@@ -225,6 +241,8 @@ public class MemberService {
         memberDao.save(member);
     }
 
+
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void updateMember(Long memberId, @Valid MemberDTO updatedMemberDTO) {
         Member existingMember = memberDao.findById(memberId).orElseThrow(() -> new RuntimeException("Member not found with id: " + memberId));
@@ -235,6 +253,8 @@ public class MemberService {
         memberDao.save(existingMember);
     }
 
+
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void updateName(Long memberId, @NotBlank String newName) {
         Member member = memberDao.findById(memberId).orElse(null);
@@ -244,6 +264,8 @@ public class MemberService {
         }
     }
 
+
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void updateAddress(Long memberId, @NotBlank String newAddress) {
         Member member = memberDao.findById(memberId).orElse(null);
@@ -253,6 +275,8 @@ public class MemberService {
         }
     }
 
+
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void updatePhoneNumber(Long memberId, @Pattern(regexp = "\\d{10}", message = "Chyba") String newPhoneNumber) {
         Member member = memberDao.findById(memberId).orElse(null);
@@ -262,6 +286,8 @@ public class MemberService {
         }
     }
 
+
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void updateEmail(Long memberId, @Email String newEmail) {
         Member member = memberDao.findById(memberId).orElse(null);
@@ -271,6 +297,8 @@ public class MemberService {
         }
     }
 
+
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void updatePassword(Long memberId, @NotBlank String newPassword) {
         Member member = memberDao.findById(memberId).orElse(null);
@@ -280,6 +308,8 @@ public class MemberService {
         }
     }
 
+
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void updateLogin(Long memberId, String newLogin) {
         Member member = memberDao.findByLogin(newLogin);
@@ -293,6 +323,8 @@ public class MemberService {
         }
     }
 
+
+    @CachePut(value = "myCache2", key = "#memberId")
     @Transactional
     public void updateLevel(Long memberId, int newLevel) {
 //        checkAdminRole();

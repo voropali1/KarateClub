@@ -7,6 +7,9 @@ import fel.cvut.cz.ear.model.Member;
 import fel.cvut.cz.ear.model.Tournament;
 import fel.cvut.cz.ear.model.TournamentResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +30,8 @@ public class TournamentResultService {
         this.tournamentDao = tournamentDao;
     }
 
+
+    @CachePut(value = "myCache3", key = "#tournamentId + '_' + #memberId + '_' + #secondMemberId + '_' + #point + '_' + #place")
     @Transactional
     public TournamentResult createTournamentResult(Long tournamentId, Long memberId, Long secondMemberId, int point, int place) {
         Tournament tournament = tournamentDao.getReferenceById(tournamentId);
@@ -44,6 +49,7 @@ public class TournamentResultService {
         return tournamentResultDao.save(tournamentResult);
     }
 
+    @CachePut(value = "myCache3", key = "#tournamentId + '_' + #place + '_' + #memberId")
     @Transactional
     public void setMemberToPlace(Long tournamentId, int place, Long memberId) {
         TournamentResult tournamentResult = tournamentResultDao.findByTournamentAndPlace(tournamentDao.getReferenceById(tournamentId), place);
@@ -51,6 +57,7 @@ public class TournamentResultService {
         persist(tournamentResult);
     }
 
+    @CachePut(value = "myCache3", key = "#tournamentId + '_' + #place + '_' + #memberId")
     @Transactional
     public void setSecondMemberToPlace(Long tournamentId, int place, Long memberId) {
         TournamentResult tournamentResult = tournamentResultDao.findByTournamentAndPlace(tournamentDao.getReferenceById(tournamentId), place);
@@ -58,6 +65,8 @@ public class TournamentResultService {
         persist(tournamentResult);
     }
 
+
+    @CachePut(value = "myCache3", key = "#tournamentId + '_' + #place + '_' + #memberId + '_' + #secondMemberId")
     @Transactional
     public void setTwoMembersToPlace(Long tournamentId, int place, Long memberId, Long secondMemberId) {
         TournamentResult tournamentResult = tournamentResultDao.findByTournamentAndPlace(tournamentDao.getReferenceById(tournamentId), place);
@@ -68,6 +77,8 @@ public class TournamentResultService {
         persist(sectournamentResult);
     }
 
+
+    @CachePut(value = "myCache3", key = "#tournamentResults + '_' + #tournamentId")
     @Transactional
     public void createTournamentResultsArray(List<TournamentResult> tournamentResults, Long tournamentId) {
         for (TournamentResult tournamentResult : tournamentResults) {
@@ -76,33 +87,41 @@ public class TournamentResultService {
         }
     }
 
+    @Cacheable(value = "myCache3", key = "#tournament + '_' + #place")
     @Transactional
     public TournamentResult findByTournamentAndPlace(Tournament tournament, int place) {
         return tournamentResultDao.findByTournamentAndPlace(tournament, place);
     }
 
+    @Cacheable(value = "myCache3", key = "#memberId")
     @Transactional(readOnly = true)
     public List<TournamentResult> getAllTournamentResultsForMember(int memberId) {
         return tournamentResultDao.findAllByMember_Id(memberId);
     }
 
+
+    @CachePut(value = "myCache3", key = "#tournamentResult")
     @Transactional
     public void persist(TournamentResult tournamentResult) {
         Objects.requireNonNull(tournamentResult);
         tournamentResultDao.save(tournamentResult);
     }
 
+    @Cacheable("myCache3")
     @Transactional
     public List<TournamentResult> getAllTournamentResults() {
         return tournamentResultDao.findAll();
     }
 
+    @Cacheable(value = "myCache3", key = "#tournamentId")
     @Transactional(readOnly = true)
     public TournamentResult getTournamentResultById(Long tournamentId) {
         return tournamentResultDao.findById(tournamentId)
                 .orElseThrow(() -> new RuntimeException("TournamentResult not found with id: " + tournamentId));
     }
 
+
+    @CachePut(value = "myCache3", key = "#tournamentId")
     @Transactional
     public void updateTournamentResult(Long tournamentId, TournamentResult updatedTournament) {
         TournamentResult tournament = getTournamentResultById(tournamentId);
@@ -114,6 +133,7 @@ public class TournamentResultService {
         tournamentResultDao.save(tournament);
     }
 
+    @CacheEvict(value = "myCache3", key = "#tournamentResultId")
     @Transactional
     public void deleteTournamentResult(Long tournamentResultId) {
         TournamentResult tournamentResult = getTournamentResultById(tournamentResultId);
