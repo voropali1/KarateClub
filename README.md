@@ -8,6 +8,7 @@ Tento projekt používá Java Spring Boot pro vývoj backendové části. Níže
 - **Docker**: Projekt je kontejnerizován pomocí Dockeru, což usnadňuje nasazení a správu závislostí.
 - **REST technologie**: Naše API je navrženo v souladu s REST principy.
 - **Cache s Hazelcast: Využíváme technologii Hazelcast pro cacheování dat, což zvyšuje výkon a optimalizuje odezvu aplikace.**.
+- **Design Patterny**: Více informací níže
 - **Architektura MVC**: Projekt je strukturován podle architektury Model-View-Controller (MVC).
 
 ## Nepoužíváme
