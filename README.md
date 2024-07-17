@@ -18,7 +18,7 @@ Tento projekt používá Java Spring Boot pro vývoj backendové části. Níže
 
 ## Stav frontendu
 
-Frontendová část projektu momentálně není k dispozici.
+Frontendová část projektu momentálně není k dispozici.(vice informaci v Teams)
 
 ## Design patterny
 
