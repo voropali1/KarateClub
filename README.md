@@ -21,9 +21,14 @@ The following design patterns are implemented in the project:
 - **Strategy**: We use this in the `NotificationStrategy` class to define different notification strategies.
   
 Here is a demonstration of the project's functionality:
-
-![Screenshot 1](images/Snímek obrazovky 2025-02-17 131812.png)
-![Screenshot 2](assets/screenshot2.png)
+- Creating clubs, making changes to them, and deleting them.
+![Screenshot 1](images/1.png)
+![Screenshot 2](images/2.png)
+![Screenshot 3](images/3.png)
+![Screenshot 4](images/4.png)
+![Screenshot 5](images/5.png)
+![Screenshot 6](images/6.png)
+![Screenshot 7](images/7.png)
 
 
 ## Getting Started
