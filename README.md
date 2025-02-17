@@ -1,43 +1,34 @@
-# Karate Club 
+# Karate Club
 
-Tento projekt používá Java Spring Boot pro vývoj backendové části. Níže jsou uvedeny hlavní rysy a technologie, které náš projekt zahrnuje:
+This project uses Java Spring Boot for the development of the backend. Below are the main features and technologies that my project includes:
 
-## Hlavní rysy
+## Main Features
 
-- **Java Spring Boot**: Používáme Spring Boot pro rychlý a efektivní vývoj backendové části.
-- **Docker**: Projekt je kontejnerizován pomocí Dockeru, což usnadňuje nasazení a správu závislostí.
-- **REST technologie**: Naše API je navrženo v souladu s REST principy.
-- **Cache s Hazelcast: Využíváme technologii Hazelcast pro cacheování dat, což zvyšuje výkon a optimalizuje odezvu aplikace.**.
-- **Design Patterny**: Více informací níže
-- **Architektura MVC**: Projekt je strukturován podle architektury Model-View-Controller (MVC).
+- **Java Spring Boot**: We use Spring Boot for rapid and efficient backend development.
+- **Docker**: The project is containerized using Docker, which simplifies deployment and dependency management.
+- **REST technologies**: Our API is designed according to REST principles.
+- **Hazelcast Cache**: We use Hazelcast technology for data caching, which improves performance and optimizes the application's response time.
+- **Design Patterns**: More details below.
+- **MVC Architecture**: The project is structured using the Model-View-Controller (MVC) architecture.
 
-## Nepoužíváme
+## Design Patterns
 
-- **Elasticsearch**
-- **Princip messaging**
-- **Interceptors**
-
-## Stav frontendu
-
-Frontendová část projektu momentálně není k dispozici.(vice informaci v Teams)
-
-## Design patterny
-
-V projektu jsou implementovány následující design patterny:
+The following design patterns are implemented in the project:
 
 - **DAO (Data Access Object)**
-- **DTO (Data Transfer Object)**: Používáme v třídě `Member` pro přenos dat.
-- **Builder**: Implementován v třídě `TournamentResult` pro vytváření instancí s více volitelnými parametry.
-- **Strategy**: Používáme v třídě `NotificationStrategy` pro definování různých notifikačních strategií.
+- **DTO (Data Transfer Object)**: We use this in the `Member` class for data transfer.
+- **Builder**: Implemented in the `TournamentResult` class for creating instances with multiple optional parameters.
+- **Strategy**: We use this in the `NotificationStrategy` class to define different notification strategies.
 
-## Jak začít
+## Getting Started
 
-1. Klonujte tento repozitář do svého lokálního prostředí.
-2. Ujistěte se, že máte nainstalovaný Docker.
-3. Zapustěte projekt podle instrukcí pro spuštění projektu s pomocí Dockeru.
+1. Clone this repository to your local environment.
+2. Make sure you have Docker installed.
+3. Start the project by following the instructions for running the project using Docker.
 
-## Kontakt
 
-Pro více informací nebo dotazy, prosím kontaktujte Alinu Voropaevu nebo Annu Luzan na emailu [voropali@fel.cvut.cz].
+## Contact
 
-Doufáme, že vám náš projekt bude užitečný!
+For more information or inquiries, please contact Alina Voropaeva via email at [voropali@fel.cvut.cz].
+
+I hope my project will be useful to you!
