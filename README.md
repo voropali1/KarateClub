@@ -1,4 +1,5 @@
 # Karate Club
+The Karate Club Management app manages members, tournaments, and notifications, supporting role-based access and data storage for payments and achievements.
 
 This project uses Java Spring Boot for the development of the backend. Below are the main features and technologies that our project includes:
 
