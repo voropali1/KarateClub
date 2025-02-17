@@ -21,7 +21,8 @@ The following design patterns are implemented in the project:
 - **Strategy**: We use this in the `NotificationStrategy` class to define different notification strategies.
   
 Here is a demonstration of the project's functionality:
--** Creating clubs, making changes to them, and deleting them.**
+
+-**Creating clubs, making changes to them, and deleting them.**
 ![Screenshot 1](images/1.png)
 ![Screenshot 2](images/2.png)
 ![Screenshot 3.1](images/3.png)
