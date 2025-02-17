@@ -1,6 +1,6 @@
 # Karate Club
 
-This project uses Java Spring Boot for the development of the backend. Below are the main features and technologies that my project includes:
+This project uses Java Spring Boot for the development of the backend. Below are the main features and technologies that our project includes:
 
 ## Main Features
 
@@ -31,4 +31,4 @@ The following design patterns are implemented in the project:
 
 For more information or inquiries, please contact Alina Voropaeva via email at [voropali@fel.cvut.cz].
 
-I hope my project will be useful to you!
+We hope our project will be useful to you!
