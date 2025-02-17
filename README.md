@@ -19,6 +19,12 @@ The following design patterns are implemented in the project:
 - **DTO (Data Transfer Object)**: We use this in the `Member` class for data transfer.
 - **Builder**: Implemented in the `TournamentResult` class for creating instances with multiple optional parameters.
 - **Strategy**: We use this in the `NotificationStrategy` class to define different notification strategies.
+  
+Here is a demonstration of the project's functionality:
+
+![Screenshot 1](images/Snímek obrazovky 2025-02-17 131812.png)
+![Screenshot 2](assets/screenshot2.png)
+
 
 ## Getting Started
 
