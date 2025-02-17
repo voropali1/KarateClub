@@ -20,10 +20,13 @@ The following design patterns are implemented in the project:
 - **DTO (Data Transfer Object)**: We use this in the `Member` class for data transfer.
 - **Builder**: Implemented in the `TournamentResult` class for creating instances with multiple optional parameters.
 - **Strategy**: We use this in the `NotificationStrategy` class to define different notification strategies.
+
+ ## Functionality
   
 Here is a demonstration of the project's functionality:
 
 -**Creating clubs, making changes to them, and deleting them.**
+
 ![Screenshot 1](images/1.png)
 ![Screenshot 2](images/2.png)
 ![Screenshot 3.1](images/3.png)
@@ -32,18 +35,31 @@ Here is a demonstration of the project's functionality:
 ![Screenshot 6](images/6.png)
 ![Screenshot 7](images/7.png)
 
+
 -**Adding and modifying participants.**
+
 ![Screenshot 8](images/8.png)
 ![Screenshot 9](images/9.png)
 ![Screenshot 10](images/10.png)
 
+
 -**Performing operations with tournaments and tournament results.**
+
 ![Screenshot 11](images/11.png)
 ![Screenshot 12](images/12.png)
+
 
 -**Sending notifications.**
 ![Screenshot 13](images/13.png)
 
+## UML Class Diagram
+![Screenshot 14](images/uml.png)
+
+## Use Case Diagram
+![Screenshot 15](images/use_case_diagram.png)
+
+## SWOT Analysis
+![Screenshot 16](images/swot.png)
 
 ## Getting Started
 
