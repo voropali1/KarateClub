@@ -53,7 +53,7 @@ Here is a demonstration of the project's functionality:
 ![Screenshot 13](images/13.png)
 
 ## 📌 UML Class Diagram
-![Screenshot 14](images/uml.png)
+![Screenshot 14](images/53.png)
 
 ## 📌 Use Case Diagram
 ![Screenshot 15](images/use_case_diagram.png)
