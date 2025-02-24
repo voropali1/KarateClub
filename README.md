@@ -10,7 +10,7 @@ This project uses Java Spring Boot for the development of the backend. Below are
 - **REST technologies**: Our API is designed according to REST principles.
 - **Hazelcast Cache**: We use Hazelcast technology for data caching, which improves performance and optimizes the application's response time.
 - **Design Patterns**: More details below.
-- **MVC Architecture**: The project is structured using the Model-View-Controller (MVC) architecture.
+- **MVC Architecture**: The project is structured using the Model-View-Controller (MVC) architecture. 
 
 ## 📌 Design Patterns
 
